@@ -103,8 +103,8 @@ if u_linea > 0:
     max_din = float(st.session_state.u0_medido + 5.0)
     st.sidebar.divider()
     mostrar_traza = st.sidebar.checkbox("Mostrar Medición (Traza Roja)", value=True)
-    st.sidebar.slider("Tan Delta en 1.5 Uo (MAESTRO)", min_value=min_din, max_value=max_din, key='td_15', on_change=calcular_seguidor_05, step=0.01)
-    st.sidebar.slider("Tan Delta en 0.5 Uo (SEGUIDOR)", 0.0, float(max(st.session_state.u0_medido, 0.1)), key='td_05', disabled=True, step=0.01)
+    st.sidebar.slider("Tan Delta en 1.5 Uo", min_value=min_din, max_value=max_din, key='td_15', on_change=calcular_seguidor_05, step=0.01)
+    st.sidebar.slider("Tan Delta en 0.5 Uo", 0.0, float(max(st.session_state.u0_medido, 0.1)), key='td_05', disabled=True, step=0.01)
 
 # --- GRÁFICO 1: ABANICO ---
 def crear_grafico_abanico(voltajes, u0_val, medicion_actual, mostrar_traza_roja, u_nom_sistema):
@@ -303,3 +303,4 @@ if u_linea > 0:
         else:
 
             st.sidebar.error("Error al generar Excel.")
+
