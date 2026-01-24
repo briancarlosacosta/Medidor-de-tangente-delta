@@ -67,10 +67,10 @@ if u_linea > 0:
     max_din = float(st.session_state.u0_medido + 5.0)
 
     st.sidebar.divider()
-    mostrar_traza = st.sidebar.checkbox("📉 Mostrar Medición (Traza Roja)", value=True)
+    mostrar_traza = st.sidebar.checkbox("Mostrar Medición (Traza Roja)", value=True)
 
-    st.sidebar.slider("Tan Delta en 1.5 Uo (MAESTRO)", min_value=min_din, max_value=max_din, key='td_15', on_change=calcular_seguidor_05, step=0.01)
-    st.sidebar.slider("Tan Delta en 0.5 Uo (SEGUIDOR)", 0.0, float(max(st.session_state.u0_medido, 0.1)), key='td_05', disabled=True, step=0.01)
+    st.sidebar.slider("Tan Delta en 1.5 Uo ", min_value=min_din, max_value=max_din, key='td_15', on_change=calcular_seguidor_05, step=0.01)
+    st.sidebar.slider("Tan Delta en 0.5 Uo ", 0.0, float(max(st.session_state.u0_medido, 0.1)), key='td_05', disabled=True, step=0.01)
 
 # --- FUNCIÓN GRÁFICA ---
 
@@ -207,4 +207,5 @@ def exportar_excel_imagen(fig_p, u0_sel):
 if u_linea > 0:
     if st.sidebar.button("📦 Generar Informe de Ingeniería"):
         archivo = exportar_excel_imagen(fig_final, st.session_state.u0_medido)
+
         st.sidebar.download_button("⬇️ Descargar Reporte (.xlsx)", data=archivo, file_name=f"Informe_Inducor_{u_linea}kV.xlsx")
