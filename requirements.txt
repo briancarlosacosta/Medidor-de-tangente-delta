@@ -1,8 +1,8 @@
 streamlit
 plotly
 pandas
-openpyxl
 numpy
 Pillow
-kaleido==0.2.1
-
+imageio
+kaleido
+openpyxl
