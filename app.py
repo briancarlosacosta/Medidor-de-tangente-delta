@@ -683,7 +683,7 @@ class ChartBuilder:
                 "buttons": [
                     {"args": [loop_sequence_area, {"frame": {"duration": 100, "redraw": True}, "fromcurrent": True, "transition": {"duration": 100, "easing": "linear"}}], "label": "▶ PLAY", "method": "animate"},
                     {"args": [[None], {"frame": {"duration": 0, "redraw": False}, "mode": "immediate", "transition": {"duration": 0}}], "label": "⏸ PAUSA", "method": "animate"},
-                    {"args": [["0"], {"frame": {"duration": 0, "redraw": False}, "mode": "immediate", "transition": {"duration": 0}}], "label": "⏹ REINICIAR", "method": "animate"}
+                    {"args": [["0"], {"frame": {"duration": 0, "redraw": False}, "mode": "immediate", "transition": {"duration": 0}}], "label": "⏹ STOP", "method": "animate"}
                 ],
                 "direction": "left", "pad": {"r": 10, "t": 10}, "showactive": False, "type": "buttons", "x": 0.12, "xanchor": "center", "y": -0.08, "yanchor": "top"
             }]
