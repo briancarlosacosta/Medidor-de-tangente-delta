@@ -24,7 +24,7 @@ class Config:
     COLOR_GREY_BOX = "#D3D9DF" 
 
     DELTA_NO_ACTION = 1.5
-    # FORZAMOS COLOR NEGRO AQUÍ
+
     TITLE_FONT = dict(size=14, family="Arial Black", color="black")
 
 st.set_page_config(page_title=Config.PAGE_TITLE, layout="wide")
@@ -186,7 +186,7 @@ class ChartBuilder:
             yaxis=dict(title="<b>Tag(δ) 1·10⁻³</b>", range=[0, y_max], dtick=y_dtick, gridcolor='#E0E0E0', mirror=True, linecolor='black', fixedrange=True, tickfont=dict(color="black")),
             yaxis2=dict(range=[0, y_max], dtick=y_dtick, overlaying='y', side='right', showgrid=False, showline=False, tickfont=dict(color="black"), fixedrange=True),
             
-            # FONDO BLANCO OBLIGATORIO para que el texto negro se vea
+          
             plot_bgcolor='white', 
             paper_bgcolor='white', 
             height=700, margin=dict(l=80, r=80, t=180, b=180), showlegend=False,
@@ -788,7 +788,7 @@ def main():
 
     
 
-    # --- AJUSTE EJE Y (LÍMITE MÁXIMO 15 - UNA SOLA VEZ) ---
+    # --- AJUSTE EJE Y (LÍMITE MÁXIMO 15) ---
     with st.sidebar.expander("Ajuste eje Y (Tag δ)", expanded=False):
         y_max = st.number_input(
             "Límite Superior eje Y", 
