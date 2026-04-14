@@ -24,7 +24,6 @@ class Config:
     COLOR_GREY_BOX = "#D3D9DF" 
 
     DELTA_NO_ACTION = 1.5
-
     TITLE_FONT = dict(size=14, family="Arial Black", color="black")
 
 st.set_page_config(page_title=Config.PAGE_TITLE, layout="wide")
@@ -119,8 +118,6 @@ def generate_gif_from_frames(base_fig: go.Figure, frames) -> bytes:
             if hasattr(trace_data, 'text') and trace_data.text is not None:
                 temp_fig.data[trace_index].text = trace_data.text
 
-       
-
         if hasattr(frame, 'layout') and frame.layout is not None:
 
             if hasattr(frame.layout, 'annotations'):
@@ -185,8 +182,7 @@ class ChartBuilder:
             xaxis=dict(title="<b>NIVELES DE TENSION (kV)</b>", tickmode='array', tickvals=x_ticks, ticktext=x_labels, mirror=True, linecolor='black', showgrid=False, fixedrange=True, tickfont=dict(color="black")),
             yaxis=dict(title="<b>Tag(δ) 1·10⁻³</b>", range=[0, y_max], dtick=y_dtick, gridcolor='#E0E0E0', mirror=True, linecolor='black', fixedrange=True, tickfont=dict(color="black")),
             yaxis2=dict(range=[0, y_max], dtick=y_dtick, overlaying='y', side='right', showgrid=False, showline=False, tickfont=dict(color="black"), fixedrange=True),
-            
-          
+                 
             plot_bgcolor='white', 
             paper_bgcolor='white', 
             height=700, margin=dict(l=80, r=80, t=180, b=180), showlegend=False,
@@ -215,7 +211,7 @@ class ChartBuilder:
 
         for i in range(num_frames):
             p = i / (num_frames - 1)  
-
+            
             curr_05 = b_05 + p * (m_05 - b_05)
             curr_10 = b_10 + p * (m_10 - b_10)
             curr_15 = b_15 + p * (m_15 - b_15)
@@ -292,9 +288,7 @@ class ChartBuilder:
             mode='lines', line=dict(width=0),
             fill='tonexty', fillcolor=Config.COLOR_AREA_FILL,
             hoverinfo='skip', visible=show_sweep
-        ))
-
-       
+        ))      
 
         fig.add_trace(go.Scatter(
 
@@ -338,8 +332,6 @@ class ChartBuilder:
             borderpad=4
         )
 
-
-
         fig.add_annotation(
             x=v_points[0], y=u0_measured, text=f"{u0_disp} x10⁻³",
             showarrow=True, arrowhead=0, arrowcolor="#B0B0B0",
@@ -358,8 +350,6 @@ class ChartBuilder:
             font=dict(color="#666666", size=10),
             xanchor="right"
         )
-
-
 
         title_text = (
             f"<b>Análisis de Tangente Delta - 0,1Hz - IEEE 400.2</b><br>"
@@ -421,8 +411,6 @@ class ChartBuilder:
 
         ChartBuilder._add_logos(fig, x_pos=0.95, y_pos=-0.10)
         return fig
-
-
 
     @staticmethod
 
@@ -687,7 +675,6 @@ class ChartBuilder:
 
         return fig
 
-
 # ==========================================
 # 5. MAIN UI Y AUTOMATIZACIÓN DE CAMPOS
 # ==========================================
@@ -728,7 +715,6 @@ def main():
         """,
         unsafe_allow_html=True,
     )
-
 
 
     if os.path.exists(Config.LOGO_PATH):
@@ -784,9 +770,7 @@ def main():
                                  max_value=999.0, format="%.2f", key='kv_end_key')
 
         v_points = [kv_start, kv_mid, kv_end]
-        x_dtick = st.number_input("Escala eje X (Saltos de)", min_value=0.1, max_value=999.0, value=1.0, step=0.5)
-
-    
+        x_dtick = st.number_input("Escala eje X (Saltos de)", min_value=0.1, max_value=999.0, value=1.0, step=0.5) 
 
     # --- AJUSTE EJE Y (LÍMITE MÁXIMO 15) ---
     with st.sidebar.expander("Ajuste eje Y (Tag δ)", expanded=False):
